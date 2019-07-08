@@ -16,8 +16,8 @@ namespace MunicipalServiceFrguCodesHelper
         private const int ServiceNameColumn = 2;
         private const int FirstColumn = 3;
 
-        private const int OfficeNameRow = 1;
-        private const int OfficeCodeRow = 2;
+        private const int departmentNameRow = 1;
+        private const int departmentCodeRow = 2;
         private const int FirstRow = 3;
 
         private const string isn_classif_id = "fa101c64-0e12-4ee7-ba9e-3c5b7c263d90";
@@ -93,17 +93,17 @@ namespace MunicipalServiceFrguCodesHelper
 
             for (int column = FirstColumn; column <= worksheet.Dimension.End.Column; column++)
             {
-                var officeCode = worksheet.Cells[OfficeCodeRow, column].Value?.ToString();
-                if (string.IsNullOrEmpty(officeCode))
+                var departmentCode = worksheet.Cells[departmentCodeRow, column].Value?.ToString();
+                if (string.IsNullOrEmpty(departmentCode))
                 {
-                    Console.WriteLine($"Не определен 'Код ведомства', адрес ячейки [{OfficeCodeRow}:{column}]");
+                    Console.WriteLine($"Не определен 'Код ведомства', адрес ячейки [{departmentCodeRow}:{column}]");
                     continue;
                 }
 
-                var officeName = worksheet.Cells[OfficeNameRow, column].Value?.ToString();
-                if (string.IsNullOrEmpty(officeName))
+                var departmentName = worksheet.Cells[departmentNameRow, column].Value?.ToString();
+                if (string.IsNullOrEmpty(departmentName))
                 {
-                    Console.WriteLine($"Не определен 'Наименование ведомства', адрес ячейки [{OfficeNameRow}:{column}]");
+                    Console.WriteLine($"Не определен 'Наименование ведомства', адрес ячейки [{departmentNameRow}:{column}]");
                     continue;
                 }
 
@@ -128,8 +128,8 @@ namespace MunicipalServiceFrguCodesHelper
                         classifInfoCollection.Add(new ClassifInfo()
                         {
                             CodeFrgu = codeFrgu,
-                            OfficeCode = officeCode,
-                            OfficeName = officeName,
+                            DepartmentCode = departmentCode,
+                            DepartmentName = departmentName,
                             ServiceCode = serviceCode,
                             ServiceName = serviceName
                         });
@@ -186,8 +186,8 @@ namespace MunicipalServiceFrguCodesHelper
                 sb.AppendLine($"<isn_node>{Guid.NewGuid()}</isn_node>");
                 sb.AppendLine("<isn_parent_node xsi:nil=\"true\" />");
                 sb.AppendLine("<is_parent>false</is_parent>");
-                sb.AppendLine($"<field0>{item.OfficeCode}</field0>");
-                sb.AppendLine($"<field1>{item.OfficeName}</field1>");
+                sb.AppendLine($"<field0>{item.DepartmentCode}</field0>");
+                sb.AppendLine($"<field1>{item.DepartmentName}</field1>");
                 sb.AppendLine($"<field2>{item.ServiceCode}</field2>");
                 sb.AppendLine($"<field3>{item.ServiceName}</field3>");
                 sb.AppendLine($"<field4>{item.CodeFrgu}</field4>");
@@ -211,10 +211,10 @@ namespace MunicipalServiceFrguCodesHelper
             public string ServiceName { get; set; }
 
             /// <summary> Код ведомства </summary>
-            public string OfficeCode { get; set; }
+            public string DepartmentCode { get; set; }
 
             /// <summary> Наименование ведомства </summary>
-            public string OfficeName { get; set; }
+            public string DepartmentName { get; set; }
         }
     }
 }
