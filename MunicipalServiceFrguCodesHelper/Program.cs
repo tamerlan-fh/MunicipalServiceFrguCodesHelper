@@ -91,7 +91,7 @@ namespace MunicipalServiceFrguCodesHelper
             if (worksheet.Dimension.End.Row < FirstRow)
                 throw new Exception($"Лист {worksheet.Name} содержит число строк {worksheet.Dimension.End.Row}, что меньше минимально допустимого!");
 
-            for (int column = FirstColumn; column < worksheet.Dimension.End.Column; column++)
+            for (int column = FirstColumn; column <= worksheet.Dimension.End.Column; column++)
             {
                 var officeCode = worksheet.Cells[OfficeCodeRow, column].Value?.ToString();
                 if (string.IsNullOrEmpty(officeCode))
@@ -107,7 +107,7 @@ namespace MunicipalServiceFrguCodesHelper
                     continue;
                 }
 
-                for (int row = FirstRow; row < worksheet.Dimension.End.Row; row++)
+                for (int row = FirstRow; row <= worksheet.Dimension.End.Row; row++)
                 {
                     var serviceCode = worksheet.Cells[row, ServiceCodeColumn].Value?.ToString();
                     if (string.IsNullOrEmpty(serviceCode))
