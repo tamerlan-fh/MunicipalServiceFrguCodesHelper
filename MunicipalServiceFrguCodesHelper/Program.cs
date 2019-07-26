@@ -28,7 +28,7 @@ namespace MunicipalServiceFrguCodesHelper
             AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(OnAssemblyResolve);
             try
             {
-                Console.WriteLine("Укажите путь к файлу 'Муниципальные услуги коды ФРГУ.xls':");
+                Console.WriteLine("Укажите полный путь к эксель-файлу, содержащий таблицу кодов ФРГУ муниципальных услуг (следует указать весь путь вместе с расширением файла):");
                 var path = new FileInfo(Console.ReadLine());
                 if (path.Exists)
                 {
