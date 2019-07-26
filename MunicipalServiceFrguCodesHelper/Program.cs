@@ -21,7 +21,7 @@ namespace MunicipalServiceFrguCodesHelper
         private const int FirstRow = 3;
 
         private const string isn_classif_id = "fa101c64-0e12-4ee7-ba9e-3c5b7c263d90";
-        private const string isn_classif_name = "Коды ФРГУ муниципальных услуг";
+        private const string isn_classif_name = "Виды заявлений ДСР";
 
         static void Main(string[] args)
         {
